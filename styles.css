@@ -1,6 +1,13 @@
+* {
+    margin: 0;
+    font-family: "Roboto";
+  }
+
 .container {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    max-height: 100vh;
 }
 
 /* sidebar */
@@ -23,6 +30,17 @@
     grid-template-columns: 0.25fr 1fr;
   }
   
+
+.main-header{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    height: 100%;
+}
+.main-body{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 100%;
+}
 .project-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
