@@ -23,7 +23,7 @@
 }
 
 body{
-    width: 100vh;
+    width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-areas: 
@@ -34,7 +34,6 @@ body{
 }
 
 .drawer{
-    grid-area: drawer;
     background-color: var(--drawer-color);
     width: 5rem;
     position: fixed;
@@ -49,11 +48,16 @@ body{
 
 .menuItem > h1{
     display: none;
-    margin-left: 5%;
+    margin-left: 2rem;
 }
 
 .drawer:hover > .menuItem > h1{
-    display: inline;
+    display: flex;
+}
+
+.drawer:hover ~ .navbar,
+.drawer:hover ~ .content {
+  margin-left: calc(var(--drawer-width) - 5rem);
 }
 
 .menuItem{
@@ -66,6 +70,10 @@ body{
 .menuItem >* {
     cursor: pointer;
 }
+
+a {
+    text-decoration: none;
+  }
 
 .drawer > div:not(:first-child) > *{
     padding: 1vw 0.1vw 0.1vw 0vw;
@@ -103,6 +111,8 @@ body{
     background-color: var(--nav-bg-1);
     padding: 1.5rem 3rem;
     border-bottom: 2px solid rgb(219,219,219);
+    position: sticky;
+    top: 0;
 }
 
 .topNav{
@@ -211,8 +221,6 @@ img {
     grid-template-areas: 
     "projects announcements"
     "projects trending";
-    overflow: auto;
-    height: 100%;
 }
 
 .content h3{
@@ -221,13 +229,21 @@ img {
     margin-bottom: 0.8rem;
 }
 
+.card {
+    background-color: rgba(45,187,187.459);
+    border-radius: .6rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0.4px 6px -4px rgb(0 0 0 / 0.1);
+    max-width: 30vw;
+}
+
 .projects {
     grid-area: projects;
 }
 
 .projects .cards {
     display: grid;
-    grid-template-columns: repeat(autofit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     grid-auto-rows: 250px;
     gap: 2rem;
     padding-bottom: 2rem;
@@ -236,6 +252,7 @@ img {
 .projects .card{
     background-color: var(--nav-color-2);
     border-left: 10px solid orange;
+    display: flex;
     flex-direction: column;
 }
 
@@ -250,4 +267,109 @@ img {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.projects .icons {
+    margin-top: auto;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.4rem;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.announcements {
+    grid-area: announcements;
+}
+
+.announcement {
+    width: 25ch;
+    padding: 1rem 0;
+}
+
+.announcement:first-child{
+    padding-top: 0;
+}
+
+.announcement:last-child{
+    padding-bottom: 0;
+}
+
+.announcement h5{
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.announcement p{
+    font-size: .8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.announcement +.announcement {
+    border-top: rgb(115, 115, 115) 1px solid;
+}
+
+.trending {
+    grid-area: trending;
+}
+
+.trending .card {
+    padding: 1.5rem;
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.trend + .trend {
+    margin-top: 1.5rem;
+}
+
+.trend .account{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.trend .username{
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.trend-1 .gh-avatar2 {
+    background: var(--gh-avatar2) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-2 .gh-avatar3 {
+    background: var(--gh-avatar3) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-3 .gh-avatar4 {
+    background: var(--gh-avatar4) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-4 .gh-avatar5 {
+    background: var(--gh-avatar5) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
